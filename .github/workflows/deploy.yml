@@ -17,6 +17,8 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
       - name: Load & Cache Deps
         uses: ./.github/actions/cached-deps
+        with:
+          caching: 'false'
       - name: Lint code
         run: npm run lint
   test:
