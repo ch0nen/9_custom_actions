@@ -16,9 +16,12 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
       - name: Load & Cache Deps
+        id: cache-deps
         uses: ./.github/actions/cached-deps
         with:
-          caching: 'false'
+          caching: "false"
+      - name: Output information
+        run: echo "Cached used? ${{ steps.cache-deps.outputs.used-cache }}"
       - name: Lint code
         run: npm run lint
   test:
